@@ -9,7 +9,7 @@ env:
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
-  DIY_P2_SH: diy-part2.sh
+  DIY_P2_SH: AfterPart.sh
   TZ: Asia/Shanghai
 
 jobs:
