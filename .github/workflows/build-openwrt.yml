@@ -1,13 +1,3 @@
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
-
 name: Build OpenWrt
 
 on:
@@ -20,11 +10,6 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P2_SH: diy-part2.sh
-  UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -103,13 +88,6 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload bin directory
-      uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-      with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
-
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -118,7 +96,7 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: Prepare artifact
-    run: |
+        run: |
         mkdir -p ./artifact/firmware
         mkdir -p ./artifact/package
         mkdir -p ./artifact/buildinfo
@@ -128,20 +106,20 @@ jobs:
         cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
     
     - name: Deliver buildinfo
-    uses: actions/upload-artifact@v2
-    with:
+      uses: actions/upload-artifact@v2
+      with:
         name: OpenWrt_buildinfo
         path: ./artifact/buildinfo/
     
     - name: Deliver package
-    uses: actions/upload-artifact@v2
-    with:
+      uses: actions/upload-artifact@v2
+      with:
         name: OpenWrt_package
         path: ./artifact/package/
     
     - name: Deliver firmware
-    uses: actions/upload-artifact@v2
-    with:
+      uses: actions/upload-artifact@v2
+      with:
         name: OpenWrt_firmware
         path: ./bin/targets/
     
