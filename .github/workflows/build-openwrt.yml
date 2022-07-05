@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/Ishiharaerika/OpenWrtCompileSource
-  REPO_BRANCH: master
+  REPO_BRANCH: openwrt-22.03
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P2_SH: AfterPart.sh
