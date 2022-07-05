@@ -19,3 +19,4 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
 git clone https://github.com/jerrykuku/luci-theme-argon.git
 git clone https://github.com/lisaac/luci-app-dockerman.git
 git clone https://github.com/f8q8/luci-app-filetransfer.git
+git clone https://github.com/openwrt/packages.git
