@@ -19,7 +19,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # when set to "true" but frees about 6 GB
+        tool-cache: true
+        dotnet: false
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
