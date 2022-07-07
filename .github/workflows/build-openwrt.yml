@@ -62,7 +62,6 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
         cd package
         mkdir selfpackages
-        git clone https://github.com/vernesong/OpenClash/tree/master/luci-app-openclash
         git clone https://github.com/jerrykuku/luci-app-argon-config.git
         git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
         git clone https://github.com/jerrykuku/luci-theme-argon.git
